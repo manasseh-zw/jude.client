@@ -7,7 +7,11 @@ export default {
     "./node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        geist: ["Geist", "sans-serif"],
+      },
+    },
   },
   darkMode: "class",
   plugins: [heroui(
@@ -234,6 +238,9 @@ export default {
         "disabledOpacity": "0.5"
       }
     }
-  )],
+  ),
+  require("@tailwindcss/typography"),
+  require("tailwindcss-animate"),
+],
 }
 

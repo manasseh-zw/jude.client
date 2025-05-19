@@ -29,7 +29,7 @@ if (rootElement && !rootElement.innerHTML) {
 	root.render(
 		<StrictMode>
 			<Providers>
-				<main>
+				<main className="font-geist">
 					<RouterProvider router={router} />
 				</main>
 			</Providers>
