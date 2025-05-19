@@ -1,3 +1,4 @@
+import { Button } from "@heroui/react";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({
@@ -6,8 +7,11 @@ export const Route = createFileRoute("/")({
 
 function App() {
 	return (
-		<div className="text-center">
-			<h1 className="text-3xl font-bold underline">Hello world!</h1>
+		<div className="text-center font-bold">
+			<p className="font-bold text-3xl">test</p>
+			<Button variant="solid" color="primary">
+				Hello
+			</Button>
 		</div>
 	);
 }
