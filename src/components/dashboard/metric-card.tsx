@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Card, CardBody, CardFooter, Tooltip } from '@heroui/react';
 import { DynamicIcon, type IconName } from 'lucide-react/dynamic';
 

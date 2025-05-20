@@ -121,7 +121,7 @@ export const RulesManager: React.FC = () => {
       condition: ruleCondition,
       action: ruleAction,
       status: ruleStatus,
-      priority: parseInt(rulePriority)
+      priority: Number.parseInt(rulePriority)
     };
     
     if (editingRule) {

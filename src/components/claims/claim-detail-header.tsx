@@ -1,4 +1,4 @@
-import React from 'react';
+import type React from 'react';
 import { Card, CardBody, Button, Avatar } from '@heroui/react';
 import { Building2, Calendar, DollarSign, Printer } from 'lucide-react';
 
