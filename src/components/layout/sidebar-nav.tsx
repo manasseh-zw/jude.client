@@ -19,11 +19,18 @@ export const sidebarItems: SidebarItem[] = [
 		title: "Dashboard",
 	},
 	{
-		key: "history",
-		href: "/library",
-		iconName: "history",
-		title: "History",
+		key: "claims",
+		href: "/claims",
+		iconName: "file-text",
+		title: "Claims",
 	},
+	{
+		key: "knowledge",
+		href: "/knowledge",
+		iconName: "book-text",
+		title: "Knowledge Base",
+	},
+
 ];
 
 export type SidebarProps = {
@@ -62,7 +69,7 @@ const SidebarNav = React.forwardRef<HTMLElement, SidebarProps>(
 									"text-gray-600 ": !isActive,
 								})}
 							/>
-							{!isCompact && (
+							{!isCompact && (	
 								<span
 									className={cn("text-sm font-medium", {
 										"text-primary font-semibold": isActive,

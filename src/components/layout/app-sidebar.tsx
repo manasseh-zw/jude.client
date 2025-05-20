@@ -3,8 +3,8 @@ import React from "react";
 import { useMediaQuery } from "usehooks-ts";
 import { ChevronLeft, ChevronRight, LogOut, SidebarIcon } from "lucide-react";
 import Avatar from "boring-avatars";
-import SidebarNav from "./SidebarNav";
-import SidebarDrawer from "./SidebarDrawer";
+import SidebarNav from "./sidebar-nav";
+import SidebarDrawer from "./sidebar-drawer";
 import Logo from "../Logo";
 import { user } from "@/lib/user";
 

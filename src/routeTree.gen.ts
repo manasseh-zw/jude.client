@@ -13,7 +13,10 @@
 import { Route as rootRoute } from './routes/__root'
 import { Route as appImport } from './routes/__app'
 import { Route as IndexImport } from './routes/index'
-import { Route as appDashboardImport } from './routes/__app/dashboard'
+import { Route as appKnowledgeIndexImport } from './routes/__app/knowledge/index'
+import { Route as appDashboardIndexImport } from './routes/__app/dashboard/index'
+import { Route as appClaimsIndexImport } from './routes/__app/claims/index'
+import { Route as appClaimsIdIndexImport } from './routes/__app/claims/$id/index'
 
 // Create/Update Routes
 
@@ -28,9 +31,27 @@ const IndexRoute = IndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const appDashboardRoute = appDashboardImport.update({
-  id: '/dashboard',
-  path: '/dashboard',
+const appKnowledgeIndexRoute = appKnowledgeIndexImport.update({
+  id: '/knowledge/',
+  path: '/knowledge/',
+  getParentRoute: () => appRoute,
+} as any)
+
+const appDashboardIndexRoute = appDashboardIndexImport.update({
+  id: '/dashboard/',
+  path: '/dashboard/',
+  getParentRoute: () => appRoute,
+} as any)
+
+const appClaimsIndexRoute = appClaimsIndexImport.update({
+  id: '/claims/',
+  path: '/claims/',
+  getParentRoute: () => appRoute,
+} as any)
+
+const appClaimsIdIndexRoute = appClaimsIdIndexImport.update({
+  id: '/claims/$id/',
+  path: '/claims/$id/',
   getParentRoute: () => appRoute,
 } as any)
 
@@ -52,11 +73,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof appImport
       parentRoute: typeof rootRoute
     }
-    '/__app/dashboard': {
-      id: '/__app/dashboard'
+    '/__app/claims/': {
+      id: '/__app/claims/'
+      path: '/claims'
+      fullPath: '/claims'
+      preLoaderRoute: typeof appClaimsIndexImport
+      parentRoute: typeof appImport
+    }
+    '/__app/dashboard/': {
+      id: '/__app/dashboard/'
       path: '/dashboard'
       fullPath: '/dashboard'
-      preLoaderRoute: typeof appDashboardImport
+      preLoaderRoute: typeof appDashboardIndexImport
+      parentRoute: typeof appImport
+    }
+    '/__app/knowledge/': {
+      id: '/__app/knowledge/'
+      path: '/knowledge'
+      fullPath: '/knowledge'
+      preLoaderRoute: typeof appKnowledgeIndexImport
+      parentRoute: typeof appImport
+    }
+    '/__app/claims/$id/': {
+      id: '/__app/claims/$id/'
+      path: '/claims/$id'
+      fullPath: '/claims/$id'
+      preLoaderRoute: typeof appClaimsIdIndexImport
       parentRoute: typeof appImport
     }
   }
@@ -65,11 +107,17 @@ declare module '@tanstack/react-router' {
 // Create and export the route tree
 
 interface appRouteChildren {
-  appDashboardRoute: typeof appDashboardRoute
+  appClaimsIndexRoute: typeof appClaimsIndexRoute
+  appDashboardIndexRoute: typeof appDashboardIndexRoute
+  appKnowledgeIndexRoute: typeof appKnowledgeIndexRoute
+  appClaimsIdIndexRoute: typeof appClaimsIdIndexRoute
 }
 
 const appRouteChildren: appRouteChildren = {
-  appDashboardRoute: appDashboardRoute,
+  appClaimsIndexRoute: appClaimsIndexRoute,
+  appDashboardIndexRoute: appDashboardIndexRoute,
+  appKnowledgeIndexRoute: appKnowledgeIndexRoute,
+  appClaimsIdIndexRoute: appClaimsIdIndexRoute,
 }
 
 const appRouteWithChildren = appRoute._addFileChildren(appRouteChildren)
@@ -77,28 +125,44 @@ const appRouteWithChildren = appRoute._addFileChildren(appRouteChildren)
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '': typeof appRouteWithChildren
-  '/dashboard': typeof appDashboardRoute
+  '/claims': typeof appClaimsIndexRoute
+  '/dashboard': typeof appDashboardIndexRoute
+  '/knowledge': typeof appKnowledgeIndexRoute
+  '/claims/$id': typeof appClaimsIdIndexRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '': typeof appRouteWithChildren
-  '/dashboard': typeof appDashboardRoute
+  '/claims': typeof appClaimsIndexRoute
+  '/dashboard': typeof appDashboardIndexRoute
+  '/knowledge': typeof appKnowledgeIndexRoute
+  '/claims/$id': typeof appClaimsIdIndexRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
   '/__app': typeof appRouteWithChildren
-  '/__app/dashboard': typeof appDashboardRoute
+  '/__app/claims/': typeof appClaimsIndexRoute
+  '/__app/dashboard/': typeof appDashboardIndexRoute
+  '/__app/knowledge/': typeof appKnowledgeIndexRoute
+  '/__app/claims/$id/': typeof appClaimsIdIndexRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '' | '/dashboard'
+  fullPaths: '/' | '' | '/claims' | '/dashboard' | '/knowledge' | '/claims/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '' | '/dashboard'
-  id: '__root__' | '/' | '/__app' | '/__app/dashboard'
+  to: '/' | '' | '/claims' | '/dashboard' | '/knowledge' | '/claims/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/__app'
+    | '/__app/claims/'
+    | '/__app/dashboard/'
+    | '/__app/knowledge/'
+    | '/__app/claims/$id/'
   fileRoutesById: FileRoutesById
 }
 
@@ -132,11 +196,26 @@ export const routeTree = rootRoute
     "/__app": {
       "filePath": "__app.tsx",
       "children": [
-        "/__app/dashboard"
+        "/__app/claims/",
+        "/__app/dashboard/",
+        "/__app/knowledge/",
+        "/__app/claims/$id/"
       ]
     },
-    "/__app/dashboard": {
-      "filePath": "__app/dashboard.tsx",
+    "/__app/claims/": {
+      "filePath": "__app/claims/index.tsx",
+      "parent": "/__app"
+    },
+    "/__app/dashboard/": {
+      "filePath": "__app/dashboard/index.tsx",
+      "parent": "/__app"
+    },
+    "/__app/knowledge/": {
+      "filePath": "__app/knowledge/index.tsx",
+      "parent": "/__app"
+    },
+    "/__app/claims/$id/": {
+      "filePath": "__app/claims/$id/index.tsx",
       "parent": "/__app"
     }
   }
