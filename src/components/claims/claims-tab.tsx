@@ -17,7 +17,6 @@ import {
   Edit,
   Clock,
   X,
-  AlertTriangle,
   Inbox,
   Cpu,
   User
@@ -375,7 +374,7 @@ export const ClaimTabs: React.FC<ClaimTabsProps> = ({ claimId }) => {
                         { label: "Missing Information", color: "danger" as const },
                         { label: "Requires Additional Review", color: "warning" as const },
                         { label: "Possible Duplicate", color: "warning" as const },
-                      ].map((reason, idx) => (
+                      ].map((reason) => (
                         <Chip
                           key={reason.label}
                           variant={notes.includes(reason.label) ? "solid" : "flat"}

@@ -9,7 +9,6 @@ import {
   TableBody, 
   TableRow, 
   TableCell,
-  Chip,
   Switch,
   Modal,
   ModalContent,

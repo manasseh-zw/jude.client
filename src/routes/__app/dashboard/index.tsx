@@ -1,4 +1,3 @@
-import React from 'react';
 import { createFileRoute } from '@tanstack/react-router';
 import { 
   Card, 
@@ -12,8 +11,7 @@ import {
   DropdownMenu,
   DropdownItem,
   Select,
-  SelectItem,
-  Badge
+  SelectItem
 } from '@heroui/react';
 import { DynamicIcon } from 'lucide-react/dynamic';
 

@@ -22,7 +22,7 @@ import {
   Input,
   useDisclosure
 } from '@heroui/react';
-import { Upload, Eye, Archive, RotateCcw, MoreVertical, UploadCloud } from 'lucide-react';
+import { Upload, Eye, Archive, MoreVertical, UploadCloud } from 'lucide-react';
 
 
 interface PolicyDocument {

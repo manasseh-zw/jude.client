@@ -5,7 +5,6 @@ import { ChevronLeft, ChevronRight, LogOut, SidebarIcon } from "lucide-react";
 import Avatar from "boring-avatars";
 import SidebarNav from "./sidebar-nav";
 import SidebarDrawer from "./sidebar-drawer";
-import Logo from "../Logo";
 import { user } from "@/lib/user";
 
 const SIDEBAR_COLLAPSED_KEY = "apolllo-sidebar-collapsed";

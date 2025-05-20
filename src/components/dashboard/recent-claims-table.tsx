@@ -16,7 +16,6 @@ import {
   DropdownItem,
   Chip,
   User,
-  Pagination,
   type Selection,
   type ChipProps,
   type SortDescriptor,
@@ -116,8 +115,6 @@ export function RecentClaimsTable() {
   });
   const [page, setPage] = React.useState(1);
 
-  const pages = Math.ceil(claims.length / rowsPerPage);
-
   const hasSearchFilter = Boolean(filterValue);
 
   const headerColumns = React.useMemo(() => {
@@ -152,8 +149,8 @@ export function RecentClaimsTable() {
 
   const sortedItems = React.useMemo(() => {
     return [...items].sort((a: Claim, b: Claim) => {
-      const first = a[sortDescriptor.column as keyof Claim];
-      const second = b[sortDescriptor.column as keyof Claim];
+      const first = a[sortDescriptor.column as keyof Claim] ?? '';
+      const second = b[sortDescriptor.column as keyof Claim] ?? '';
       const cmp = first < second ? -1 : first > second ? 1 : 0;
       return sortDescriptor.direction === "descending" ? -cmp : cmp;
     });
